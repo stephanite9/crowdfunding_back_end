@@ -14,7 +14,7 @@ class FundraiserList(APIView):
     def post(self, request):
         serializer = FundraiserSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
+            serializer.save(owner=request.user)
             return Response(
                 serializer.data,
                 status=status.HTTP_201_CREATED
@@ -58,4 +58,8 @@ class PledgeList(APIView):
                 serializer.errors,
                 status=status.HTTP_400_BAD_REQUEST
             )
+        
+
+# class TrendingFundraisers(APIView):
+    # def get(self, request):
         
