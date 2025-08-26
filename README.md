@@ -1,9 +1,9 @@
 # Crowdfunding Back End
-{{ Stephanie Chan }}
+Stephanie Chan
 
 ## Planning:
 ### Concept/Name
-{{ Name Ideas - Relauncher, The Show Must Go On, Take Two, A crowdfunding app to bring back cancelled TV shows and movie franchises from the dead. }}
+Name Ideas - Relauncher, The Show Must Go On, Take Two, a crowdfunding app to bring back cancelled TV shows and movie franchises from the dead.
 
 ### Intended Audience/User Stories
 {{ Varied audience - creatives looking for funds to make stories and get their ideas off the ground, producers looking for funding for projects that are already fleshed out, fans who want to support beloved media that ended too soon. }}
@@ -11,7 +11,7 @@
 ### Front End Pages/Functionality
 - {{ Home Page }}
     - {{ Featured fundraisers }}
-    - {{ Successful fundraisers }}
+    - {{ Latest successful fundraisers }}
     - {{ Discover fundraisers - search by media type, location }}
 - {{ Create New Fundraiser }}
     - {{ Form for fundraiser details }}
@@ -31,8 +31,8 @@ It can be helpful to keep the markdown preview open in VS Code so that you can s
 
 | URL          | HTTP Method | Purpose               | Request Body | Success Response Code          | Authentication/Authorisation |
 | ------------ | ----------- | --------------------- | ------------ | ------------------------------ | ---------------------------- |
-| /fundraisers |             |                       |              |                                |                              |
-|              |
+| /fundraisers/ |             |  Fetch all fundraisers  | GET | JSON payload|  201  |
+| /fundraisers/<pk>|             |
 | /pledges/    |             | Fetch all the pledges | GET          | N/A (no body)                  | 200                          |
 | /pledges/    |             | Create a new pledge   | POST         | JSON payload {"fundraiser_id"} | 201                          | Logged in user |
 
