@@ -31,10 +31,14 @@ It can be helpful to keep the markdown preview open in VS Code so that you can s
 
 | URL          | HTTP Method | Purpose               | Request Body | Success Response Code          | Authentication/Authorisation |
 | ------------ | ----------- | --------------------- | ------------ | ------------------------------ | ---------------------------- |
-| /fundraisers/ |             |  Fetch all fundraisers  | GET | JSON payload|  201  |
-| /fundraisers/<pk>|             |
-| /pledges/    |             | Fetch all the pledges | GET          | N/A (no body)                  | 200                          |
-| /pledges/    |             | Create a new pledge   | POST         | JSON payload {"fundraiser_id"} | 201                          | Logged in user |
+| /fundraisers/ | GET|  Fetch all fundraisers  | JSON payload|  200  |
+| /fundraisers/<pk>| GET | Fetch specific fundraiser| JSON payload |200
+|/fundraisers/| POST | Create new fundraiser| JSON payload |201|Logged in user
+|/fundraisers/<pk>| PUT | Update specific fundraiser| JSON payload |201|Logged in user
+| /pledges/    |  GET | Fetch all the pledges | N/A (no body)  | 200     |
+| /pledges/<pk>| GET | Fetch specific pledge| JSON payload |200
+| /pledges/    |  POST | Create a new pledge | JSON payload | 201     | Logged in user |
+| /pledges/<pk>  |  POST | Update a pledge | JSON payload | 201     | Logged in user |
 
 ### DB Schema
 ![]( {{ ./relative/path/to/your/schema/image.png }} )

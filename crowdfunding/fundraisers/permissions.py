@@ -4,5 +4,11 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
     def has_object_permission(self, request, view, obj):
         if request.method in permissions.SAFE_METHODS:
             return True
-        else:
+        # Check for Fundraiser owner or Pledge supporter
+        if hasattr(obj, 'owner'):
             return obj.owner == request.user
+        elif hasattr(obj, 'supporter'):
+            return obj.supporter == request.user
+        return False
+        # else:
+        #     return obj.owner == request.user

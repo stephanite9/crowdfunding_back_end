@@ -28,3 +28,13 @@ class FundraiserDetailSerializer(FundraiserSerializer):
         instance.owner = validated_data.get('owner', instance.owner)
         instance.save()
         return instance
+    
+class PledgeDetailSerializer(PledgeSerializer):
+    fundraiser = FundraiserSerializer(read_only=True)
+
+    def update(self, instance, validated_data):
+        instance.amount = validated_data.get('amount', instance.amount)
+        instance.comment = validated_data.get('comment', instance.comment)
+        instance.anonymous = validated_data.get('anonymous', instance.anonymous)
+        instance.save()
+        return instance
