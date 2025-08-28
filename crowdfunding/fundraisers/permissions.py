@@ -12,3 +12,6 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
         return False
         # else:
         #     return obj.owner == request.user
+
+
+# class IsSupporterOrReadOnly

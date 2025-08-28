@@ -2,10 +2,23 @@ from django.db import models
 from django.contrib.auth import get_user_model
 
 class Fundraiser(models.Model):
+
+    LOCATION_CHOICES = {
+        "australia": "Australia",
+        "newzealand": "New Zealand",
+        "canada": "Canada",
+        "japan": "Japan",
+    }
+
+    MEDIA_TYPE_CHOICES = {
+        "tv": "Television",
+        "film": "Film,"
+    }
+
     title = models.CharField(max_length=200)
     description = models.TextField()
-    # location = models.TextField()
-    # media = models.TextField() - limit to either film or television
+    location = models.CharField(choices = LOCATION_CHOICES)
+    media = models.CharField(choices = MEDIA_TYPE_CHOICES)
     goal = models.IntegerField()
     image = models.URLField()
     is_open = models.BooleanField()

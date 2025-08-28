@@ -29,6 +29,8 @@ It might look messy here in the PDF, but once it's rendered it looks very neat!
 
 It can be helpful to keep the markdown preview open in VS Code so that you can see what you're typing more easily. }}
 
+
+
 | URL          | HTTP Method | Purpose               | Request Body | Success Response Code          | Authentication/Authorisation |
 | ------------ | ----------- | --------------------- | ------------ | ------------------------------ | ---------------------------- |
 | /fundraisers/ | GET|  Fetch all fundraisers  | JSON payload|  200  |
@@ -39,6 +41,8 @@ It can be helpful to keep the markdown preview open in VS Code so that you can s
 | /pledges/<pk>| GET | Fetch specific pledge| JSON payload |200
 | /pledges/    |  POST | Create a new pledge | JSON payload | 201     | Logged in user |
 | /pledges/<pk>  |  POST | Update a pledge | JSON payload | 201     | Logged in user |
+| /users/    |  GET | Fetch all users | N/A (no body)  | 200     |
+| /users/<pk>    |  GET | Fetch 1 user with id <pk> | N/A (no body)  | 200     |
 
 ### DB Schema
 ![]( {{ ./relative/path/to/your/schema/image.png }} )
