@@ -12,13 +12,13 @@ class Fundraiser(models.Model):
 
     MEDIA_TYPE_CHOICES = {
         "tv": "Television",
-        "film": "Film,"
+        "film": "Film",
     }
 
     title = models.CharField(max_length=200)
     description = models.TextField()
-    location = models.CharField(choices = LOCATION_CHOICES)
-    media = models.CharField(choices = MEDIA_TYPE_CHOICES)
+    location = models.CharField(choices = LOCATION_CHOICES, max_length=20)
+    media = models.CharField(choices = MEDIA_TYPE_CHOICES, max_length=20)
     goal = models.IntegerField()
     image = models.URLField()
     is_open = models.BooleanField()
