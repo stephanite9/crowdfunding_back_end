@@ -15,3 +15,10 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
 
 
 # class IsSupporterOrReadOnly
+
+# class CustomPermission(permissions.BasePermission):
+#             message = 'You do not have the necessary permissions to perform this action.'
+
+#             def has_permission(self, request, view):
+#                 # Your permission logic here
+#                 return False # Example: always deny for demonstration
