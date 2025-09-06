@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status, permissions
 from django.http import Http404
 from .models import Fundraiser, Pledge
+from django.db.models import Count, Sum
 from .serializers import FundraiserSerializer, PledgeSerializer, FundraiserDetailSerializer, PledgeDetailSerializer
 from .permissions import IsOwnerOrReadOnly
 
@@ -126,6 +127,25 @@ class PledgeDetail(APIView):
                 status = status.HTTP_400_BAD_REQUEST
             )
 
-# class TrendingFundraisers(APIView):
-    # def get(self, request):
-        
+class LatestFundraisers(APIView):
+    permission_classes = [
+        permissions.IsAuthenticatedOrReadOnly,
+        ]
+
+    def get(self, request):
+        fundraisers = Fundraiser.objects.all().order_by('-date_created')[:5]
+        serializer = FundraiserSerializer(fundraisers, many=True)
+        return Response(serializer.data)
+    
+
+class TrendingFundraisers(APIView):
+    permission_classes = [
+        permissions.IsAuthenticatedOrReadOnly,
+        ]
+
+    def get(self, request):
+        fundraisers = Fundraiser.objects.annotate(num_pledges= Count("pledges")).order_by("-num_pledges")[:5]
+        num_pledges = Fundraiser.objects.annotate(num_pledges= Count("pledges"))
+        print(f'NUMBER OF PLEDGES: {num_pledges}')
+        serializer = FundraiserSerializer(fundraisers, many=True)
+        return Response(serializer.data)

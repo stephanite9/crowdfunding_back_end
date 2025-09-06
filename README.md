@@ -3,7 +3,7 @@ Stephanie Chan
 
 ## Planning:
 ### Concept/Name
-Name Ideas - Relauncher, The Show Must Go On, Take Two, a crowdfunding app to bring back cancelled TV shows and movie franchises from the dead.
+The Show Must Go On, a crowdfunding app to bring back cancelled TV shows and movie franchises from the dead.
 
 show-goes-on-app
 
@@ -29,7 +29,7 @@ Fill out the table below to define your endpoints. An example of what this might
 
 It might look messy here in the PDF, but once it's rendered it looks very neat! 
 
-It can be helpful to keep the markdown preview open in VS Code so that you can see what you're typing more easily. }}
+It can be helpful to keep the markdown preview open in VS Code so that you can see what you're typing more easily. 
 
 
 
