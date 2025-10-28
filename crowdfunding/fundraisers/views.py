@@ -149,3 +149,20 @@ class TrendingFundraisers(APIView):
         print(f'NUMBER OF PLEDGES: {num_pledges}')
         serializer = FundraiserSerializer(fundraisers, many=True)
         return Response(serializer.data)
+
+class SumPledgeAmount(APIView):
+    permission_classes = [
+        permissions.IsAuthenticatedOrReadOnly,
+        ]
+    
+    def get(self, request):
+        fundraisers = Fundraiser.objects.annotate(total_pledged=Sum('pledges__amount')).order_by("total_pledged")
+        data = [
+            {
+                "id": fundraiser.id,
+                "title": fundraiser.title,
+                "total_pledged": fundraiser.total_pledged or 0
+            }
+            for fundraiser in fundraisers
+        ]
+        return Response(data)

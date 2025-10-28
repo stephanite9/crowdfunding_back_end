@@ -7,4 +7,5 @@ urlpatterns = [
     path('pledges/<int:pk>/', views.PledgeDetail.as_view()),
     path('fundraisers/latest/', views.LatestFundraisers.as_view()),
     path('fundraisers/trending/', views.TrendingFundraisers.as_view()),
+    path('fundraisers/pledgeamounts/', views.SumPledgeAmount.as_view()),
 ]
