@@ -1,14 +1,19 @@
 from rest_framework import serializers
 from django.apps import apps
+from .models import Fundraiser
 
 class FundraiserSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.id')
     username = serializers.ReadOnlyField(source='owner.username')
-    description = serializers.CharField(style={'base_template': 'textarea.html'}, allow_blank=True)
+    description = serializers.CharField(allow_blank=True)
 
     class Meta:
         model = apps.get_model('fundraisers.Fundraiser')
         fields = '__all__'
+
+    def create(self, validated_data):
+        # Don't escape HTML in description
+        return Fundraiser.objects.create(**validated_data)
 
 class PledgeSerializer(serializers.ModelSerializer):
     supporter = serializers.ReadOnlyField(source='supporter.id')
