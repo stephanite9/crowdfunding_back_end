@@ -4,6 +4,7 @@ from django.apps import apps
 class FundraiserSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.id')
     username = serializers.ReadOnlyField(source='owner.username')
+    description = serializers.CharField(style={'base_template': 'textarea.html'}, allow_blank=True)
 
     class Meta:
         model = apps.get_model('fundraisers.Fundraiser')
