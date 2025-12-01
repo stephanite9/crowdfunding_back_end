@@ -10,7 +10,7 @@ from .permissions import IsOwnerOrReadOnly
 class FundraiserList(APIView):
     permission_classes = [
         permissions.IsAuthenticatedOrReadOnly,
-        ]
+    ]
 
     def get(self, request):
         fundraisers = Fundraiser.objects.all()
@@ -18,9 +18,11 @@ class FundraiserList(APIView):
         return Response(serializer.data)
     
     def post(self, request):
+        print(f"RAW DESCRIPTION: {request.data.get('description')}")
         serializer = FundraiserSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save(owner=request.user)
+            instance = serializer.save(owner=request.user)
+            print(f"SAVED DESCRIPTION: {instance.description}")
             return Response(
                 serializer.data,
                 status=status.HTTP_201_CREATED
